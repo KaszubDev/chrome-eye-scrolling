@@ -1,12 +1,13 @@
-const webgazer = require('webgazer');
+
+const webgazer = (window as any).webgazer
 
 export function testWebGazer() {
-    webgazer.setGazeListener(function(data: { x: any; y: any; } | null, elapsedTime: any) {
+    webgazer.setGazeListener(function(data, elapsedTime) {
         if (data == null) {
             return;
         }
         var xprediction = data.x; //these x coordinates are relative to the viewport
         var yprediction = data.y; //these y coordinates are relative to the viewport
-        console.log(elapsedTime); //elapsed time is based on time since begin was called
+        console.log(xprediction, yprediction); //elapsed time is based on time since begin was called
     }).begin();
 }

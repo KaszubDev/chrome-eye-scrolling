@@ -1,15 +1,33 @@
 {
    "name": "Eye Scrolling Extension",
-   "description": "Scroll web pages using only your own eyes!",
+   "description": "Scroll web pages using only your eyes!",
    "version": "1.0",
    "manifest_version": 3,
+
+   "web_accessible_resources": [{
+    "matches": ["<all_urls>"],
+    "resources": ["js/webgazer.js"]
+  }],
+
+   "content_scripts": [
+    {
+        "matches": ["<all_urls>"],
+        "js": ["js/contentscript.js"]
+    }
+  ],
+
+   "options_page": "settings.html",
+
    "action": {
-       "default_popup": "index.html",
-       "default_title": "Open the popup"
-   },
-   "icons": {
-       "16": "logo192.png",
-       "48": "logo192.png",
-       "128": "logo192.png"
-   }
+    "default_icon": "favicon.ico",
+    "default_popup": "popup.html"
+  },
+
+   "permissions": [
+    "storage",
+    "tabs"
+  ],
+
+  "host_permissions": [ "<all_urls>" ]
+
 }
