@@ -3,31 +3,28 @@
    "description": "Scroll web pages using only your eyes!",
    "version": "1.0",
    "manifest_version": 3,
-
-   "web_accessible_resources": [{
-    "matches": ["<all_urls>"],
-    "resources": ["js/webgazer.js"]
-  }],
-
-   "content_scripts": [
-    {
-        "matches": ["<all_urls>"],
-        "js": ["js/contentscript.js"]
-    }
-  ],
-
+   "icons": {
+    "16": "images/icon-16x16.png",
+    "32": "images/icon-32x32.png",
+    "128": "images/icon-128x128.png"
+   },
    "options_page": "settings.html",
-
    "action": {
-    "default_icon": "favicon.ico",
+    "default_icon": {
+      "16": "images/icon-16x16.png",
+      "32": "images/icon-32x32.png",
+      "128": "images/icon-128x128.png"
+    },
     "default_popup": "popup.html"
   },
-
    "permissions": [
     "storage",
-    "tabs"
+    "tabs",
+    "scripting",
+    "activeTab"
   ],
-
-  "host_permissions": [ "<all_urls>" ]
-
+  "host_permissions": [ "<all_urls>" ],
+  "background": {
+    "service_worker": "src/background.js"
+  }
 }
